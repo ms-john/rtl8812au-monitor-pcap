@@ -15,6 +15,7 @@
 #ifndef __HAL_VERSION_DEF_H__
 #define __HAL_VERSION_DEF_H__
 
+#include "platform_macos.h"
 #include "basic_types.h"
 #include "drv_types.h"
 

@@ -1,5 +1,5 @@
 # rtl8812au-monitor-pcap
-Use RTL8812AU to capture 802.11 raw data frame and dump to .pcap file on Windows
+Use RTL8812AU to capture 802.11 raw data frame and dump to .pcap file on MacOS
 
 ### rtl8812au userspace driver
 [devourer](https://github.com/openipc/devourer)
@@ -7,11 +7,11 @@ Use RTL8812AU to capture 802.11 raw data frame and dump to .pcap file on Windows
 The RTL8812AU driver that simply devours its competitors
 
 ### usage
-- Repair libusb driver
+~~- Repair libusb driver~~
 
-download [Zadig](https://github.com/pbatard/libwdi/releases/download/v1.5.0/zadig-2.8.exe)
+~~download [Zadig](https://github.com/pbatard/libwdi/releases/download/v1.5.0/zadig-2.8.exe)~~
 
-![img.png](images/img.png)
+~~![img.png](images/img.png)~~
 
 
 - Command line
@@ -43,18 +43,14 @@ enum ChannelWidth_t {
 
 ![img_1.png](images/img_1.png)
 
-### Windows Build
+### MacOS(arm64) Build
 
-You can download and install libraries using the vcpkg dependency manager:
+You can download and install libraries using the homebrew dependency manager:
 
 ```
+brew install libusb libpcap
 cd rtl8812au-monitor-pcap
-git clone https://github.com/Microsoft/vcpkg.git
-cd vcpkg
-.\bootstrap-vcpkg.bat
-.\vcpkg integrate install
-.\vcpkg install libusb libpcap
-cd ..
-cmake -DCMAKE_TOOLCHAIN_FILE=vcpkg/scripts/buildsystems/vcpkg.cmake  -G "Visual Studio 16 2019" -A x64 -S ./ -B "build64" 
-cmake --build build64 --config Release --target WiFiCapture
+cmake -G "Xcode" -S ./ -B "build"
+cmake --build build --config Release --target WiFiCapture
+
 ```

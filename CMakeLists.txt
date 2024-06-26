@@ -7,7 +7,8 @@ set(CMAKE_CXX_STANDARD 20)
 find_package(PkgConfig REQUIRED)
 
 pkg_check_modules(LIBUSB REQUIRED IMPORTED_TARGET libusb-1.0)
-pkg_check_modules(LIBPCAP REQUIRED IMPORTED_TARGET libpcap)
+set(LIBPCAP_HEADERS /opt/homebrew/opt/libpcap/include)
+set(LIBPCAP_LIBS /opt/homebrew/opt/libpcap/lib)
 
 
 add_executable(WiFiCapture
@@ -49,9 +50,10 @@ add_executable(WiFiCapture
 
 target_link_libraries(WiFiCapture PRIVATE
     PkgConfig::LIBUSB
-    PkgConfig::LIBPCAP
+    ${LIBPCAP_LIBS}/libpcap.a
     )
 
 set_property(TARGET WiFiCapture PROPERTY CXX_STANDARD 20)
-target_include_directories(WiFiCapture PRIVATE hal)
-
+target_include_directories(WiFiCapture PRIVATE hal
+    ${LIBPCAP_HEADERS}
+)

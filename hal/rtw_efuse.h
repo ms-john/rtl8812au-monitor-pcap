@@ -15,6 +15,7 @@
 #ifndef __RTW_EFUSE_H__
 #define __RTW_EFUSE_H__
 
+#include "platform_macos.h"
 #include "drv_types.h"
 
 #define	EFUSE_ERROE_HANDLE		1
