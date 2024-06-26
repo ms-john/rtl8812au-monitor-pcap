@@ -18,15 +18,6 @@
 #endif
 #include <tcl.h>
 
-#ifndef TRUE
-#define TRUE	true
-#endif
-
-#ifndef FALSE
-#define FALSE	false
-#endif
-
-
 
 
 #endif //PLATFORM_MACOS_H
